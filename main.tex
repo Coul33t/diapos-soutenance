@@ -469,15 +469,15 @@
 	\begin{frame}{\subsecname}
 		Ensembles de descripteurs pour l'indexation et la recherche de mouvement :
 		\begin{itemize}[label=$\bullet$]
-			\item Sakurai \textit{et al.} : plusieurs aires extraites d'un pentagone calculé, reliant la tête, la main droite, le pied droit, le pied gauche et la main gauche, puis utilisation de la DTW pour la recherche \mycite{Sakurai2015Ros}
-			\item Xiao \textit{et al.} : projection du mouvement 3D sur 8 plans 2D, puis extraction de lignes reliant les articulations (les articulations extrêmes entre elles et les articulations extrêmes par rapport à la hiérarchie du squelette), puis réduction à l'aide d'un algorithme de séléction de caractéristiques semi-supervisé \mycite{Xiao2015Sbh}
+			\item Sakurai \textit{et al.} : plusieurs aires extraites d'un pentagone calculé, puis utilisation de la DTW pour la recherche \mycite{Sakurai2015Ros}
+			\item Xiao \textit{et al.} : projection du mouvement 3D sur 8 plans 2D, puis réduction à l'aide d'un algorithme de séléction de caractéristiques semi-supervisé \mycite{Xiao2015Sbh}
 		\end{itemize}
 	\end{frame}
 	
 	\begin{frame}{\subsecname}
 		Ensembles de descripteurs pour la reconnaissance d'actions :
 		\begin{itemize}[label=$\bullet$]
-			\item  Delaye et Anquetil : 49 descripteurs servant à caractériser les mouvements d'écriture : points de début et de fin de trait, angles formés par les différentes parties des lettres, proportion de trajectoires dirigées, etc. (HBF49) \mycite{Delaye2013HBF}
+			\item  Delaye et Anquetil : descripteurs servant à caractériser les mouvements d'écriture : points de début et de fin de trait, angles formés par les différentes parties des lettres, proportion de trajectoires dirigées, etc. (HBF49) \mycite{Delaye2013HBF}
 			\item Boulahia \textit{et al.} : généralisation de HBF49 à une trajectoire 3D (HIF3D) \mycite{Boulahia2016HIF}
 			\item Rao \textit{et al.} : caractérise les moments d'inflexion dans la trajectoire, afin de les segmenter en unités élémentaires \mycite{Rao2002VRR}
 		\end{itemize}
@@ -498,26 +498,6 @@
 		\begin{itemize}[label=$\bullet$]
 			\item Descripteurs non issus de calculs, de ré-interprétations ou d'ensembles de descripteurs « bas-niveau » du mouvement
 			\item Répondent à des besoins d'observation et d'analyse
-		\end{itemize}
-	\end{frame}
-	
-	\begin{frame}{\subsecname}
-		\begin{itemize}[label=$\bullet$]
-			\item mouvement saccadé : donne une indication sur la fluidité du mouvement
-			\item courbure : mesure la vitesse de changement de la trajectoire
-			\item quantité de mouvement : moyenne pondérée des vitesses d'un ensemble d'articulation du corps
-			\item forme englobante : plus petite forme (boîte, sphère, ellipsoïde...) englobant la totalité des articulations et des membres du corps
-			\item enveloppe convexe : enveloppe minimale englobant le corps
-			\item centre de masse : moyenne pondérée (ou non) des positions des articulations (ou d'un sous ensemble des articulations) du corps
-		\end{itemize}
-	\end{frame}
-	
-	\begin{frame}{\subsecname}
-		\begin{itemize}[label=$\bullet$]
-			\item équilibre : valeur booléenne indiquant si la projection du centre de masse au sol est comprise au sein de la projection au sol de la forme englobante du corps
-			\item profilage : décrit l'évolution de la forme du corps au cours du mouvement : extension/rétractation, élargissement/réduction, enflement/creusement
-			\item quantité d'effort : caractérise l'intensité d'un effort fourni sur un intervalle de temps défini, variant de « faible » à « intense »
-			\item durée d'effort : représente la durée d'un effort fourni, caractérisé en « urgent » ou « continu »
 		\end{itemize}
 	\end{frame}
 	
@@ -760,6 +740,12 @@
 	\end{frame}
 
 	\section{Traitements des données}
+	
+	\subsection{Matériel de capture}
+	\begin{frame}{Perception Neuron}
+		
+	\end{frame}
+	
 	\subsection{Taille des membres}
 	\begin{frame}{Variation de la taille des membres}
 		Fixation de la taille des membres à l'aide de la posture de référence (posture à l'indice 0)
@@ -1003,11 +989,6 @@
 	\begin{frame}{\secname : \subsecname}
 		\centering
 		\includegraphics[scale=0.5]{img/BFC_diagram.png}
-	\end{frame}
-	
-	\begin{frame}{\secname : \subsecname}
-		\centering
-		\includegraphics[scale=0.5]{img/ball_throwing.png}
 	\end{frame}
 	
 	\subsection{Étiquetage des données et participants}
