@@ -21,8 +21,6 @@
 \usepackage{framed}
 \usepackage{listings}
 
-
-
 \def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
 
 \newenvironment{subitemize}{%
@@ -51,23 +49,20 @@
 \definecolor{myblue}{cmyk}{1,.72,0,.38}
 \definecolor{myblue2}{cmyk}{1,.65,0,.28}
 
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
 \newcommand{\mycite}[1]{[\textit{\cite{#1}}]}
 
-%\newcommand{\mypart}[1]{\part{#1}\begin{frame}\tableofcontents\end{frame}}
-
-\newcommand{\nonumberingframe}[1]{\begin{frame}{#1}\addtocounter{framenumber}{-1}}
-\AtBeginSection[]
-{
-  \begin{frame}
-  \frametitle{\secname}
-  %\begin{multicols}{2}
-  \tableofcontents[
-  			currentsection,
-  			hideallsubsections,
-        	subsectionstyle=hide]
-  %\end{multicols}
-  \end{frame}
-}
+\newcommand{\mypart}[1]{\part{#1}\begin{frame}\tableofcontents\end{frame}}
+%\AtBeginPart[]
+%{
+%  \begin{frame}
+%  \frametitle{\secname}
+%  %\begin{multicols}{2}
+%  \tableofcontents[hideallsubsections]
+%  %\end{multicols}
+%  \end{frame}
+%}
 
 \addbibresource{biblio.bib}
 
@@ -81,28 +76,16 @@
 \setbeamerfont{subsection in toc}{size=\small}
 \setbeamerfont{subsection in toc}{size=\smaller}
 
-\setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{footline}[frame number]
-\setbeamertemplate{bibliography item}{\insertbiblabel}
-\setbeamertemplate{headline}{%
-\leavevmode%
-  \hbox{%
-    \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.125ex]{palette quaternary}%
-    \insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll}
-    \end{beamercolorbox}%
-  }
-}
-
 
 \begin{document}
 
 	\maketitle
 
-	\section{Cadre}
-	\subsection{Cadre de la thèse}
-	\begin{frame}{\secname}
+	\part{Cadre}
+	\section{Cadre de la thèse}
+	\begin{frame}{\subsecname}
 	\centering
-		\includegraphics[scale=0.25]{img/cadre.png}
+		\includegraphics[scale=0.5]{img/venn_cadre.png}
 	\end{frame}
 
 	\begin{frame}{\secname}
@@ -122,23 +105,21 @@
 		\end{block}
 	\end{frame}
 	
-	\subsection{Problématique de la thèse}
+	\section{Problématique de la thèse}
 	\begin{frame}{Problématique}
 		Quelles sont les facteurs limitant à la réalisation d'un EIAH dédié à l'apprentissage humain de gestes, utilisable dans plusieurs domaines différents ?\\
 		
-		\vspace{1cm}		
-		
 		4 verrous identifiés :
-		\begin{itemize}[label=$\bullet$]
-			\item Détermination des propriétés du mouvements
+		\begin{itemize}
+			\item Analyse fine des mouvements
 			\item Formalisation de l'expertise
 			\item Visualisation d'indicateurs intelligibles
-			\item Restitution adaptée sous forme de conseils
+			\item Restitution sous forme de conseils adaptés
 		\end{itemize}
 	\end{frame}
 	
-	\subsection{Questions de recherche}
-	\begin{frame}{\subsecname}
+	\section{Questions de recherche}
+	\begin{frame}{\secname}
 		\begin{itemize}[label=$-$]
 			\item \textbf{Q1} : Comment développer un système permettant de caractériser le geste à l'aide de l'intégration de l'expertise d'un enseignant?
 			\item \textbf{Q2} : Comment évaluer et comparer le geste (ou ses propriétés) de l'apprenant avec celui de l'enseignant afin d'évaluer la progression de l'apprentissage?
@@ -148,8 +129,8 @@
 
 	
 	
-	\section{Etat de l'art}
-	\subsection{EIAH pour l'apprentissage du geste}
+	\mypart{Etat de l'art}
+	\section{EIAH pour l'apprentissage du geste}
 	\begin{frame}{\secname}
 		De nombreux EIAH aux finalités différentes :
 		\begin{itemize}[label=$\bullet$]
@@ -175,16 +156,16 @@
 		\includegraphics[scale=0.5]{img/tableau_eiah_2.png}
 	\end{frame}
 	
-	\subsection{Analyse du mouvement capturé}
-	\subsubsection{Descripteurs du mouvement}
-	\begin{frame}{\subsubsecname}
+	\section{Analyse du mouvement capturé}
+	\subsection{Descripteurs du descripteurs}
+	\begin{frame}{\subsecname}
 		\begin{block}{Descripteur du mouvement}
 			Un descripteur est un indicateur calculé à partir du mouvement brut :  « Des observables signifiant sur le plan pédagogique » calculés à partir de traces (tous types de données, générées à partir des interactions de l’étudiant avec le système) ou d’autres indicateurs \mycite{Choquet2007MTf}
 		\end{block}
 	\end{frame}
 	
-	\subsubsection{Analyse par observation humaine}
-	\begin{frame}{\subsubsecname}
+	\subsection{Analyse par observation humaine}
+	\begin{frame}{\subsecname}
 		\begin{itemize}[label=$\bullet$]
 			\item Visualisation de la performance de l'apprenant \mycite{Burns2011Uvh}
 			\item Superposition de l'apprenant à un ou des modèles expert \mycite{Yoshinaga2015Doa}
@@ -194,8 +175,8 @@
 			\includegraphics[scale=0.4]{img/Yoshiniga_archery.png}
 	\end{frame}
 	
-	\subsubsection{Analyse par observation d'indicateurs}
-	\begin{frame}{\subsubsecname}
+	\subsection{Analyse par observation d'indicateurs}
+	\begin{frame}{\subsecname}
 		\begin{itemize}[label=$\bullet$]
 			\item Positions relatives des parties du corps à des moments clés du lancer \mycite{Yamaoka2013FoF}
 			\item Décomposition du mouvement à l'aide d'un seul descripteur \mycite{Kyan2015ABD}
@@ -208,8 +189,8 @@
 				
 	\end{frame}
 	
-	\subsubsection{Analyse par détection de séquence ordonnée d'actions}
-	\begin{frame}{\subsubsecname}
+	\subsection{Analyse par détection de séquence ordonnée d'actions}
+	\begin{frame}{\subsecname}
 		\begin{itemize}[label=$\bullet$]
 			\item Scénarisation par l'expert, puis reproduction par l'apprenant \mycite{Mahdi2019TaE, Delest2019MaE}	
 			
@@ -220,8 +201,8 @@
 		\end{itemize}
 	\end{frame}
 	
-	\subsubsection{Analyse basée sur des techniques d'apprentissage automatique}
-	\begin{frame}{\subsubsecname}
+	\subsection{Analyse basée sur des techniques d'apprentissage automatique}
+	\begin{frame}{\subsecname}
 		\begin{itemize}[label=$\bullet$]
 			\item Évaluation de gestes sans \textit{a priori} sur le geste en lui-même \mycite{Pirsiavash2014AQA})
 			\item Segmentation, reconnaissance et évaluation de gestes à l'aide d'algorithmes de logique floue \mycite{Patrona2018MaA})
@@ -231,8 +212,8 @@
 		\includegraphics[scale=0.3]{img/olympic_games.png}
 	\end{frame}
 	
-	\subsubsection{Bilan des systèmes existants}
-	\begin{frame}{\subsubsecname}
+	\subsection{Bilan des systèmes existants}
+	\begin{frame}{\subsecname}
 		\begin{table}[]
 			\resizebox{\textwidth}{!}{%
 			\begin{tabular}{c|c|c|c}
@@ -255,9 +236,9 @@
 		\end{itemize}
 	\end{frame}
 
-	\section{Système MLA}
-	\subsection{Motion Learning Analytics}
-	\begin{frame}{\subsecname}
+	\part{Contributions}
+	\section{Motion Learning Analytics}
+	\begin{frame}{\secname}
 		\begin{block}{Motion Learning Analytics (MLA)}
 			\begin{itemize}[label=$\bullet$]
 				\item Propose un ensemble d'outils pour pré-traiter et extraire des informations permettant d'analyser un geste
@@ -267,97 +248,22 @@
 		\end{block}
 	\end{frame}
 	
-	\subsubsection{Architecture MLA}
-	\begin{frame}{\subsubsecname}
-	\centering
-		\includegraphics[scale=0.3]{img/mla/MLA_color_1.png}
-	\end{frame}
-
-	\nonumberingframe{\subsubsecname}
-	\centering
-		\includegraphics[scale=0.3]{img/mla/MLA_color_2.png}
-	\end{frame}
-
-	\nonumberingframe{\subsubsecname}
-	\centering
-		\includegraphics[scale=0.3]{img/mla/MLA_color_3.png}
-	\end{frame}
-
-	\nonumberingframe{\subsubsecname}
-	\centering
-		\includegraphics[scale=0.3]{img/mla/MLA_color_4.png}
-	\end{frame}
-
-	\nonumberingframe{\subsubsecname}
-	\centering
-		\includegraphics[scale=0.3]{img/mla/MLA_color_5.png}
-	\end{frame}
-
-	\nonumberingframe{\subsubsecname}
-	\centering
-		\includegraphics[scale=0.3]{img/mla/MLA_color_6.png}
-	\end{frame}
-
-	\nonumberingframe{\subsubsecname}
-	\centering
-		\includegraphics[scale=0.3]{img/mla/MLA_color_7.png}
-	\end{frame}
-
-	\nonumberingframe{\subsubsecname}
-	\centering
-		\includegraphics[scale=0.3]{img/mla/MLA_color_8.png}
-	\end{frame}
-
-	\nonumberingframe{\subsubsecname}
-	\centering
-		\includegraphics[scale=0.3]{img/mla/MLA_color_9.png}
-	\end{frame}
-
-	\nonumberingframe{\subsubsecname}
-	\centering
-		\includegraphics[scale=0.3]{img/mla/MLA_color_10.png}
-	\end{frame}
-
-	\nonumberingframe{\subsubsecname}
-	\centering
-		\includegraphics[scale=0.3]{img/mla/MLA_color_11.png}
-	\end{frame}
-
-	\nonumberingframe{\subsubsecname}
-	\centering
-		\includegraphics[scale=0.3]{img/mla/MLA_color_12.png}
-	\end{frame}
-
-	\nonumberingframe{\subsubsecname}
-	\centering
-		\includegraphics[scale=0.3]{img/mla/MLA_color_13.png}
-	\end{frame}
-
-	\nonumberingframe{\subsubsecname}
-	\centering
-		\includegraphics[scale=0.3]{img/mla/MLA_color_14.png}
-	\end{frame}
-
-	\nonumberingframe{\subsubsecname}
-	\centering
-		\includegraphics[scale=0.3]{img/mla/MLA_color_15.png}
-	\end{frame}
-
-	\nonumberingframe{\subsubsecname}
+	\subsection{Architecture MLA}
+	\begin{frame}{\subsecname}
 	\centering
 		\includegraphics[scale=0.3]{img/mla/MLA_color_16.png}
 	\end{frame}
 
-	\subsection{Traitements des données}
+	\section{Traitements des données}
 	
-	\subsubsection{Matériel de capture}
+	\subsection{Matériel de capture}
 	\begin{frame}{Perception Neuron}
 		\centering
 		\includegraphics[scale=0.4]{img/Perception_Neuron.png}
 	\end{frame}
 	
-	\subsubsection{Pré-traitements}
-	\begin{frame}{\subsubsecname}
+	\subsection{Pré-traitements}
+	\begin{frame}{\subsecname}
 		\begin{block}{Variation de la taille des membres}
 			Fixation de la taille des membres à l'aide de la posture de référence (posture à l'indice 0)
 		\end{block}
@@ -369,8 +275,8 @@
 		
 	\end{frame}
 	
-	\subsection{Analyse et représentation visuelle}
-	\begin{frame}{\subsecname}
+	\section{Analyse et représentation visuelle}
+	\begin{frame}{\secname}
 	Objectif : assister l'expert dans sa tâche d'évaluation du geste, en lui permettant d'obtenir un retour visuel sur les différences entre le geste de l'apprenant et le sien.
 	Pré-requis :
 	\begin{itemize}[label=$\bullet$]
@@ -382,9 +288,9 @@
 	
 	\begin{frame}{Déroulement}
 	\begin{itemize}
-		\item \textbf{1.} Normalisation des données
+		\item \textbf{1.} (Facultatif) Normalisation des données
 		\item \textbf{2.} Clustering des données de l'expert à l'aide d'un k-means, afin d'obtenir deux groupes correspondant aux bons et aux mauvais gestes (apprentissage semi-supervisé)
-		\item \textbf{3.} Comparaison des données de l'apprenant à celles de l'expert (distance euclidienne)
+		\item \textbf{3.} Comparaison des données de l'apprenant à celles de l'expert
 		\item \textbf{4.} Retour sous forme visuelle (utilisation d'un PCA si dimensionnalité des données > 2)
 	\end{itemize}
 	
@@ -392,18 +298,18 @@
 	
 	\begin{frame}{Étape de clustering}
 	\centering
-		\includegraphics[scale=0.7]{img/feedback_expert_cluster_example.png}
+		\includegraphics[scale=0.5]{img/feedback_expert_cluster_example.png}
 	\end{frame}
 	
 	\begin{frame}{Étape de comparaison}
 	\centering
-		\includegraphics[scale=0.58]{img/feedback_one.png}
+		\includegraphics[scale=0.4]{img/feedback_one.png}
 	\end{frame}
 
 
-	\section{Expérimentations}
-	\subsection{Hypothèses de recherche}
-	\begin{frame}{\subsecname}
+	\part{Expérimentations}
+	\section{Hypothèses de recherche}
+	\begin{frame}{\secname}
 		\begin{itemize}[label=$-$]
 			\item \textbf{H1} : Il est possible de regrouper les gestes selon leurs propriétés cinématiques communes.
 			\item \textbf{H2} : Il est possible de séparer les gestes des apprenants en deux groupes correspondant à une dichotomie geste réussi / geste raté afin de déterminer, pour une situation d'apprentissage donnée, les propriétés d'un ensemble fini de gestes réussis.
@@ -419,7 +325,7 @@
 		\end{itemize}
 	\end{frame}
 
-	\subsection{Protocole commun}
+	\section{Protocole commun}
 	\begin{frame}{Protocole commun aux trois expérimentations}
 		\begin{itemize}[label=$\bullet$]
 			\item Instructions données à l'apprenant
@@ -432,20 +338,20 @@
 		\includegraphics[scale=0.3]{img/percpetion_neuron_calibrations.png}
 	\end{frame}
 	
-	\subsubsection{Workflow du système MLA}
-	\begin{frame}{\subsubsecname}
+	\subsection{Workflow du système MLA}
+	\begin{frame}{\subsecname}
 	\centering
 		\includegraphics[scale=0.3]{img/workflow_MLA.png}
 	\end{frame}
 	
-	\subsubsection{Métriques calculées}
-	\begin{frame}{\subsubsecname : Average Silhouette Score (\textit{ASS})}
+	\section{Métriques calculées}
+	\begin{frame}{\secname : Average Silhouette Score (\textit{ASS})}
 		\begin{block}{Silhouette Score}
 			Calcule la bonne appartenance d'un point au cluster qui lui est assigné, en calculant la distance de ce point à tous les autres contenus dans le même cluster par rapport à ceux des autres clusters.
 		\end{block}
 		
 		\begin{block}{Average Silhouette Score \mycite{Rousseeuw1987Sag}}
-			Moyenne des Silhouette Scores de chaque point de donnée.
+			Moyenne des Silhouette Score de chaque point de donnée.
 		\end{block}
 	\end{frame}
 	
@@ -459,15 +365,15 @@
 		\end{itemize}
 	\end{frame}
 	
-	\begin{frame}{\subsubsecname : Adjusted Rand Index (\textit{ARI})}
-		\begin{block}{Adjusted Rand Index \mycite{Morey1984ARI}}
+	\begin{frame}{\secname : Adjusted Rand Index (\textit{ARI})}
+		\begin{block}{Adujsted Rand Index \mycite{Morey1984ARI}}
 			Mesure de similarité entre deux partitionnements de données différents. Cette mesure est un ajustement du Rand Index \mycite{Rand2971RI}. Une valeur de 1 indique une correspondance parfaite entre les deux partitionnement, alors qu'une valeur de 0 indique une affectation aléatoire des données. La normalisation induite par l'ajustement peut produire des valeurs négatives \mycite{Meila2007Cca}. 
 		\end{block}
 	\end{frame}
 
-	\subsection{Lancer de balle}
-	\subsubsection{Objectifs et principe}
-	\begin{frame}{\subsecname : \subsubsecname}
+	\section{Lancer de balle}
+	\subsection{Objectifs et principe}
+	\begin{frame}{\secname : \subsecname}
 		\begin{block}{Objectif}
 			Vérifier si le système est capable de séparer les gestes selon un étiquetage vérifiable par un humain à l'aide des descripteurs et des algorithmes choisis (\textbf{H1}, \textbf{H2}).
 		\end{block}
@@ -479,8 +385,8 @@
 
 	\end{frame}
 	
-	\subsubsection{Résultats}
-	\begin{frame}{\subsecname : \subsubsecname}
+	\subsection{Résultats}
+	\begin{frame}{\subsecname : \subsecname}
 		\begin{block}{Participants}
 			\begin{itemize}[label=$\bullet$]
 				\item 2 participants
@@ -499,19 +405,19 @@
 	\end{frame}
 
 
-	\subsection{Bottle Flip Challenge}
-	\subsubsection{Objectifs et principe}
-	\begin{frame}{\subsecname : \subsubsecname}
+	\section{Bottle Flip Challenge}
+	\subsection{Objectifs et principe}
+	\begin{frame}{\secname : \subsecname}
 		\begin{block}{Objectif}
-			 Déterminer s'il est possible d'obtenir une séparation des données en deux clusters, correspondant au degré de réussite du geste. (\textbf{H2}).
+			 Déterminer s'il est possible d'obtenir une séparation des données en deux clusters, correspondant au degré de réussite du geste. ( \textbf{H2}).
 		\end{block}
 	
 		\centering
 		\includegraphics[scale=0.2]{img/BFC_example.png}
 	\end{frame}
 	
-	\subsubsection{Résultats}
-	\begin{frame}{\subsecname : \subsubsecname}
+	\subsection{Résultats}
+	\begin{frame}{\secname : \subsecname}
 		\begin{block}{Participants}
 			\begin{itemize}[label=$\bullet$]
 				\item 13 participants (2 gauchers, 11 droitiers)
@@ -527,9 +433,9 @@
 		
 	\end{frame}
 
-	\subsection{Lancer de fléchettes}
-	\subsubsection{Objectifs et principe}
-	\begin{frame}{\subsecname : \subsubsecname}
+	\section{Lancer de fléchettes}
+	\subsection{Objectifs et principe}
+	\begin{frame}{\secname : \subsecname}
 		\begin{block}{Objectifs}
 			\begin{itemize}[label=$\bullet$]
 				\item Montrer qu'il est possible, à l'aide du système de retours à l'apprenant basé sur les démonstrations de l'expert et l'estimation de valeurs d'acceptabilité empiriques des propriétés du geste, de donner des conseils pertinents lors de la réalisation de ces derniers (\textbf{H3}, \textbf{H4})
@@ -539,19 +445,25 @@
 		\end{block}
 	
 		\begin{block}{Principe}
-			Lancer de fléchettes
+			Lancer de fléchettes (sport)
 		\end{block}
 		
 	\end{frame}
 	
-	\subsubsection{Position de tir}
-	\begin{frame}{\subsecname : \subsubsecname}
+	\subsection{Position de tir}
+	\begin{frame}{\secname : \subsecname}
 		\centering
 		\includegraphics[scale=0.3]{img/darts_position_alt.jpg}
 	\end{frame}
+
+	\subsection{Schéma de l'installation}
+	\begin{frame}{\secname : \subsecname}
+		\centering
+		\includegraphics[scale=0.2]{img/Darts_scheme.png}
+	\end{frame}
 	
-	\subsubsection{Acquisition des données de l'expert et participants}
-	\begin{frame}{\subsecname : \subsubsecname}
+	\subsection{Acquisition des données de l'expert et participants}
+	\begin{frame}{\secname : \subsecname}
 		\begin{block}{Acquisition des données de l'expert}
 			\begin{itemize}
 				\item \textbf{1.} Identification des défauts quantifiables
@@ -573,14 +485,14 @@
 		\end{block}
 	\end{frame}
 	
-	\subsubsection{Défauts}
-	\begin{frame}{\subsubsecname}
+	\subsection{Défauts}
+	\begin{frame}{\subsecname}
 		\centering
 		\includegraphics[scale=0.3]{img/all_defaults.png}
 	\end{frame}
 	
-	\subsubsection{Données utilisées}
-	\begin{frame}{\subsecname : \subsubsecname}
+	\subsection{Données utilisées}
+	\begin{frame}{\secname : \subsecname}
 		\begin{block}{Descripteurs}
 			\begin{itemize}[label=$\bullet$]
 				\item Leaning : vitesse moyenne des deux épaules
@@ -591,19 +503,24 @@
 		\end{block}
 	\end{frame}
 	
-	\subsubsection{Déroulement}
-	\begin{frame}{\subsecname : \subsubsecname}
+	\subsection{Déroulement}
+	\begin{frame}{\secname : \subsecname}
 		\begin{itemize}[label=$\bullet$]
 			\item Pré-questionnaire : taille, niveau d'expertise auto-évalué aux fléchettes (échelle de Likert à 7 réponses), ainsi que toute pratique actuelle d'un sport
 			\item Début de l'expérimentation
-			\item 9 lancers, suivi de deux conseils, 4 fois d'affilé
+			\item 9 lancers, suivit de deux conseils, 4 fois d'affilé
 			\item Post-questionnaire : ressenti de la personne par rapport à la combinaison, à la progression de son geste et à l'auto-évaluation de sa performance
 		\end{itemize}
 		
 	\end{frame}
 	
-	\subsubsection{Résultats}
-	\begin{frame}{\subsecname : \subsubsecname}
+	\subsection{Résultats}
+	\begin{frame}{\subsecname : Questionnaires}
+	\centering
+		\includegraphics[scale=0.4]{img/graph_questionnaires.png}
+	\end{frame}		
+	
+	\begin{frame}{\secname : \subsecname}
 	Algorithme utilisé : k-means, avec $k=2$.
 	
 	\begin{table}[h]
@@ -621,7 +538,7 @@
 		
 	\end{frame}
 	
-	\begin{frame}{\subsecname : \subsubsecname}
+	\begin{frame}{\secname : \subsecname}
 		\begin{block}{Évaluation}
 			Deux approches, en intergroupe et en intragroupe :
 			\begin{itemize}[label=$\bullet$]
@@ -631,7 +548,7 @@
 		\end{block}
 	\end{frame}
 	
-	\begin{frame}{\subsecname : \subsubsecname}
+	\begin{frame}{\secname : \subsecname}
 		En premier lieu, test de normalité : Shapiro-Wilk et d'Agostino-Pearson
 		\begin{table}[]
 			\begin{adjustbox}{max width=\textwidth}
@@ -646,30 +563,15 @@
 		\end{table}
 	\end{frame}
 	
-	\begin{frame}{\subsecname : Précision intergroupe}
-		\centering
-		\includegraphics[scale=0.3]{img/Precision_All_data_intergroupe.png}
-	\end{frame}
-	
-	\begin{frame}{\subsecname : Précision intragroupe}
-		\centering
-		\includegraphics[scale=0.3]{img/Precision_All_data_intragroupe.png}
-	\end{frame}
-	
-	\begin{frame}{\subsecname : \subsubsecname}
+	\begin{frame}{\secname : \subsecname}
 		Amélioration significatives en intragroupe entre les jeu 1 et 4 : \textit{leaning} et \textit{elbow move} pour tous les groupes, \textit{javelin} et \textit{align arm} pour le groupe 2 : \textbf{H4} est validée pour le groupe 2, et partiellement validée pour les autres groupes\\
 		\vspace{1cm}
 		Pas d'amélioration significatives en intergroupe : \textbf{H5} et \textbf{H6} ne sont pas validées
 		
 	\end{frame}
 	
-	\begin{frame}{\subsubsecname : Questionnaires}
-	\centering
-		\includegraphics[scale=0.4]{img/graph_questionnaires.png}
-	\end{frame}	
-	
-	\subsubsection{Limites}
-	\begin{frame}{\subsecname : \subsubsecname}
+	\subsection{Limites}
+	\begin{frame}{\secname : \subsecname}
 		\begin{itemize}[label=$\bullet$]
 			\item Phénomène d'auto-correction de l'expert
 			\item Nombre de lancers pour les apprenants faibles (36)
@@ -681,10 +583,10 @@
 		\end{itemize}
 	\end{frame}
 	
-	\section{Synthèse et perspectives}
-	\subsection{Synthèse des contributions}
+	\part{Synthèse des contributions et perspectives}
+	\section{Synthèse des contributions}
 	
-	\begin{frame}{\subsecname}
+	\begin{frame}{\secname}
 		\begin{itemize}[label=$\bullet$]
 			\item Proposition d'un EIAH dédié à l'apprentissage des gestes
 			\item Permet le pré-traitement des données, l'extraction de descripteurs et l'analyse du mouvement de l'apprenant
@@ -693,8 +595,8 @@
 		\end{itemize}
 	\end{frame}
 	
-	\subsection{Limites des travaux présentés}
-	\begin{frame}{\subsecname}
+	\section{Limites des travaux présentés}
+	\begin{frame}{\secname}
 		\begin{itemize}[label=$\bullet$]
 			\item Manque d'interface graphique pour utiliser le système
 			\item Pertinence des indicateurs visuels à analyser
@@ -703,15 +605,15 @@
 		\end{itemize}
 	\end{frame}
 	
-	\subsection{Perspectives}
-	\begin{frame}{\subsecname : explication des données non-alignées}
+	\section{Perspectives}
+	\begin{frame}{\secname : explication des données non-alignées}
 		Si dimensionnalité > 2, PCA : perte de sémantique
 		
 		\centering
 			\includegraphics[scale=0.5]{img/non_aligned_default.png}
 	\end{frame}
 	
-	\begin{frame}{\subsecname : création de nouveaux descripteurs}
+	\begin{frame}{\secname : création de nouveaux descripteurs}
 		Système basé sur des patrons de conception :
 		
 		\begin{framed}
@@ -725,7 +627,7 @@
 		pour calculer l'addition de la composante en $y$ de la vitesse et de la composante en $x$ de l'accélération.\\
 	\end{frame}
 	
-	\begin{frame}{\subsecname : clustering récursif}
+	\begin{frame}{\secname : clustering récursif}
 		\centering
 		\includegraphics[scale=0.5]{img/subclustering/init2.png}
 	\end{frame}
